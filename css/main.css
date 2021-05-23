@@ -1,0 +1,267 @@
+:root {
+
+    --primary: #F0C808;
+    --secondary: #0000FF;
+    --tertiary: #333333;
+    --background: #F7EDC4;
+
+    --headline: 'Roboto', sans-serif;
+    --body: 'Lora', serif;
+}
+
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+    
+}
+
+h2 {
+    font-family: var(--headline);
+    text-transform: uppercase;
+    color: var( --tertiary);
+    font-size: 30px;
+    line-height: 1.4;
+}
+
+a{
+    text-decoration: none;
+}
+
+p, label{
+    font-family: var(--body);
+    color: var(--tertiary);
+    padding-top:7px;
+}
+
+.cta-primary {
+    text-transform: capitalize;
+    color: #FFFFFF;
+    background: var(--secondary);
+    font-family: var(--headline);
+    padding: 10px 10px;
+    display: inline-block;
+    transition: .3s linear .1s;
+    cursor: pointer;
+    border-color: transparent;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+.cta-primary:hover {
+    background: #0900B3;
+}
+
+.cta-primary:disabled {
+    background: #d3d3d3;
+    color: #ffffff;
+    cursor: default;
+}
+.siteContainer {
+    width:1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0px 20px 0px 20px;
+}
+
+.imgContainer img{
+    max-width: 100%;
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+.errorMsg {
+    display: none;
+    position: absolute;
+}
+
+.error .errorMsg {
+    display: block;
+}
+
+.errorMsg p {
+    font-size: 10px;
+    color: #a94442;
+}
+
+.fieldset .error input {
+    border: 1px solid #fda0a0;
+}
+
+.footerWrapper{
+    text-align: center;
+    padding: 15px;
+}
+
+label, .fieldset{
+    display: inline-block;
+}
+
+.fieldset{
+    width:230px;
+    max-width: 100%;
+}
+
+.submitWrapper {
+    padding: 5px 0 15px;
+}
+
+.fieldset input{
+    border: 1px solid #B3B3B3;
+    padding: 10px 11px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+#hero, #features, #subscribe {
+    padding: 40px 0;
+}
+
+.fieldsetContainer {
+    position: relative;
+    height: 73px;
+}
+
+#hero, #subscribe, .thankyou, #login, #register{
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../imgs/bg.png) center repeat;
+}
+
+.thankyou, #login, #register{
+    height: 100vh;
+}
+
+#dashboard{ 
+    height: 100%;
+}
+.social {
+    width: 150px;
+    text-align: center;
+}
+
+.social a {
+    padding-right: 18px;
+}
+
+.content {
+    width:350px;
+    max-width: 100%;
+}
+.content ul {
+    padding-top:15px;
+    
+}
+
+.content ul li {
+    display: block;
+    padding-bottom: 10px;
+}
+
+.content ul li i {
+    color: #04AA6D;
+}
+
+.content a {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.formWrapper {
+    padding-top: 8px;
+}
+
+#subscribe {
+    text-align: center;
+}
+
+#subscribe .content {
+    width: 100%;
+}
+
+.logo {
+    float: none;
+    background: url(../imgs/logoTxt.png);
+    display: inline-block;
+    width: 85px;
+    height: 120px;
+    background-repeat: no-repeat;
+    text-indent: -99999px;
+    background-size: contain;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.thankyou .siteContainer div {
+    width: 600px;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.thankyou .siteContainer div i {
+    font-size: 60px;
+    color: #04AA6D;
+}
+
+.thankyou .siteContainer div h2{
+    padding-top:15px;
+}
+
+#login, #register{
+    text-align: center;
+    padding-top:40px;
+}
+
+#login .fieldset, #register .fieldset{
+    display: block;
+    margin: 0 auto;
+}
+
+#dashboard strong {
+    font-size: 18px;
+}
+
+#dashboard .details {
+    width: 400px;
+    border: 1px solid #333333;
+    padding: 20px;
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+#dashboard {
+    background: var(--background);
+    padding-bottom: 40px;
+}
+
+@media screen and (min-width: 992px) {
+    .cta-primary {
+        font-size: 16px;
+    }
+
+    #hero, #features, #subscribe {
+        padding: 40px 0;
+    }
+    .vAlign {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    #features {
+        position: relative;
+    }
+    .peep {
+        position: absolute;
+        width: 118px;
+        right: 0;
+        bottom: 91px;
+    }
+    
+}
+
+@media screen and (min-width: 768px){
+    .content {
+        width:450px
+    }
+}
