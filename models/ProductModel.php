@@ -32,6 +32,12 @@
             // object
             return $product;
         }
+
+        public function getSizeOptions()
+        {
+            $sizeArray = DB::fetchAll("SELECT * FROM product_sizes WHERE pid='".$this->id."'");
+            return $sizeArray;
+        }
     }
     
 ?>

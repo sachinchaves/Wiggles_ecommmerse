@@ -65,7 +65,7 @@
 
         public function dashboard(){
             $this->state["browserTitle"] = "Wiggles | Dashboard";
-            $this->state["details"] = memberModel::getAll();
+            $this->state["products"] = ProductsModel::getAll();
             $this->state["content"] = $this->loadView("dashboard");
             $this->state["html"] = $this->loadView("template");
         }
@@ -83,6 +83,31 @@
         public function saveContact(){
             UserModel::saveInfo($_POST["firstName"], $_POST["lastName"], $_POST["instaUsername"], $_POST["email"]);
     
+        }
+
+        public function editProductDetails(){
+            $this->state["product"] = ProductModel::get($_GET["product_id"]);
+            $this->state["content"] = $this->loadView("editProductDetails");
+            $this->state["html"] = $this->loadView("template");
+    
+        }
+
+        public function saveProductDetails() {
+            ProductsModel::saveProductDetails($_POST["product_id"]);
+        }
+
+        public function deleteProduct() {
+            ProductsModel::deleteProduct($_POST["product_id"]);
+        }
+
+        public function addProduct() {
+            $this->state["browserTitle"] = "Wiggles | Dashboard";
+            $this->state["content"] = $this->loadView("addProduct");
+            $this->state["html"] = $this->loadView("template");
+        }
+
+        public function saveProduct(){
+            ProductsModel::saveProduct($_POST["name"], $_POST["shortDescription"], $_POST["description"], $_POST["price"], $_POST["featured"], $_POST["topSelling"]);
         }
 
         public function thankyou(){

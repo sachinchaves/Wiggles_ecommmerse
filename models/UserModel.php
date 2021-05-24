@@ -35,5 +35,14 @@
             header("location: index.php?controller=pages&action=thankyou");
         }
 
+        static public function checkLoggedIn() {
+            $user = fetchOne("SELECT * FROM users WHERE id='".$_SESSION["id"]."'");
+            if($user){
+                return $user;
+             } else {
+                 header("location: index.php?controller=pages&action=login");
+             }
+        }
+
     }
 ?>
