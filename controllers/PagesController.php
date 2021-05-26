@@ -31,8 +31,10 @@
             // custom page content here
             $this->state["content"] = $this->loadView("navbar");
             $this->state["products"] = ProductsModel::getAll();
+            
             $this->state["content"] .= $this->loadView("products-grid");
-    
+            $this->state["content"] .= $this->loadView("filter");
+            $this->state["content"] .= $this->loadView("products-grid");
             $this->state["html"] = $this->loadView("template");
         }
 
@@ -110,6 +112,12 @@
             ProductsModel::saveProduct($_POST["name"], $_POST["shortDescription"], $_POST["description"], $_POST["price"], $_POST["featured"], $_POST["topSelling"]);
         }
 
+        public function filter() {
+            $this->state["products"] = ProductsModel::filterProducts($_POST["sizeId"]);
+            $this->state["content"] = $this->loadView("products-grid");
+            $this->state["html"] = $this->loadView("template");
+        }
+        
         public function thankyou(){
             $this->state["browserTitle"] = "Thank you";
 

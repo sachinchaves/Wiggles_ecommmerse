@@ -39,5 +39,12 @@
             header("location: index.php?controller=pages&action=dashboard");
         }
 
+        static public function filterProducts($selectedId) {
+            $filter = $selectedId ? 'sizeId="'.$selectedId.'"' : "";
+            
+            $products = DB::fetchAll("SELECT * FROM products WHERE $filter ");
+            return ProductsModel::productFactory($products);
+        }
+
     }
 ?>

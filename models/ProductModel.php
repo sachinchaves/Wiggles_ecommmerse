@@ -38,6 +38,14 @@
             $sizeArray = DB::fetchAll("SELECT * FROM product_sizes WHERE pid='".$this->id."'");
             return $sizeArray;
         }
+
+
+        static public function buildDropDown($arrOptions, $selectedId) {
+            foreach($arrOptions as $option) {
+                $selectedState = ($selectedId == $option["id"]) ? "SELECTED" : "";
+                echo '<option value="'.$option["id"].'" '.$selectedState.' >'.$option["name"].'</option>';
+            }
+        }
     }
     
 ?>
