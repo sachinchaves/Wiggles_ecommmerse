@@ -1,0 +1,7 @@
+https://stackoverflow.com/questions/19144200/designing-a-sql-schema-for-a-combination-of-many-to-many-relationship-variation
+
+https://www.youtube.com/watch?v=B5r8CcTUs5Y
+
+https://stackoverflow.com/questions/23241534/inserting-data-in-multiple-databases\
+
+http://sqlfiddle.com/#!2/7fd9c/1
