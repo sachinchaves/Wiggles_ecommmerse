@@ -73,13 +73,17 @@
         }
 
         public function processLogin(){
-            UserModel::login($_POST["username"], $_POST["password"]);
+            UserModel::login($_POST["username"], $_POST["password"], $_POST["loginType"]);
     
         }
 
         public function processRegister(){
-            UserModel::register($_POST["username"], $_POST["password"]);
+            UserModel::register($_POST["firstName"], $_POST["lastName"], $_POST["phone"], $_POST["username"], $_POST["password"], $_POST["address"], $_POST["city"], $_POST["province"], $_POST["postalCode"], $_POST["country"]);
     
+        }
+
+        public function processAddress(){
+
         }
 
         public function saveContact(){
@@ -111,6 +115,7 @@
         public function saveProduct(){
             ProductsModel::saveProduct($_POST["name"], $_POST["shortDescription"], $_POST["description"], $_POST["price"], $_POST["featured"], $_POST["topSelling"]);
         }
+
 
         public function filter() {
             $this->state["products"] = ProductsModel::filterProducts($_POST["sizeId"]);

@@ -3,12 +3,11 @@
     <div class="siteContainer">
         <div  class="formcontainer">
             <h1 class="logo">Wiggles | The Pet Bandana shop</h1>
-            <h2>Login</h2>
+            <h2>Customer Login</h2>
 
             <form method="post" action="index.php?controller=pages&action=processLogin">
-                <input type="hidden" name="loginType" value="adminUser">
                 <div class="fieldset">
-                    <input type="text" placeholder="Username" name="username"/>
+                    <input type="text" placeholder="Email" name="username"/>
                 </div>
                 <div class="fieldset">
                     <input type="password" placeholder="Password" name="password"/>

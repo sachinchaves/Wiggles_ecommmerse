@@ -6,14 +6,16 @@
         var $description;
         var $image;
         var $price;
+        var $quantity;
 
-        public function __construct($id,$name, $description, $shortDescription, $image, $price){
+        public function __construct($id,$name, $description, $shortDescription, $image, $price, $quantity){
             $this->id = $id;
             $this->name = $name;
             $this->description = $description;
             $this->shortDescription = $shortDescription;
             $this->image = $image;
             $this->price = $price;
+            $this->quantity = $quantity;
         }
 
         static public function get($id)
@@ -26,7 +28,8 @@
                 $productArray["description"],
                 $productArray["shortDescription"],
                 $productArray["image"],
-                $productArray["price"]
+                $productArray["price"],
+                $productArray["quantity"]
             );
     
             // object

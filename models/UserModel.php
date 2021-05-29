@@ -2,17 +2,20 @@
 
     class UserModel {
 
-        static public function login($username, $password) {
-            $oDB = new DB();
-            $user = DB::fetchOne("SELECT * FROM users WHERE username='". mysqli_real_escape_string($oDB->connect(), $username)."'");
+        static public function login($username, $password, $loginType) {
+            $dbName = ($loginType == "adminUser") ? "users" : "customers";
+            $redirectLink = ($loginType == "adminUser") ? "index.php?controller=pages&action=dashboard": "index.php?controller=cart&action=billingInfo";
+            $sessionVal = ($loginType == "adminUser") ? "adminId" : "customerId";
+            $con = DB::connect();
+            $user = DB::fetchOne("SELECT * FROM $dbName WHERE username='". mysqli_real_escape_string($con, $username)."'");
             // return $user;
             echo "Error, Please fill in the correct details";
             if($user) {
-                $_SESSION["id"] = $user["id"];
+                $_SESSION[$sessionVal] = $user["id"];
                 $encPassword = $user["password"];
                 $providedPassword = $_POST["password"];
                 if(password_verify($providedPassword, $encPassword)){
-                    header("location: index.php?controller=pages&action=dashboard");
+                    header("location: $redirectLink");
                 }else {
                     header("location: index.php?controller=pages&action=login&status=error");
                 }
@@ -24,10 +27,20 @@
         
         }
 
-        public function register($username, $password) {
+        static public function register($firstName, $lastName, $phone, $username, $password, $address, $city, $province, $postalCode) {
+            $con = DB::connect();
             $encPass = password_hash($password, PASSWORD_DEFAULT);
-            DB::runQuery("INSERT INTO users (username, password) VALUES ('".$username."', '".$encPass."')");
-            header("location: index.php?controller=pages&action=dashboard");
+            DB::runQuery("INSERT INTO customers (`firstName`, `lastName`, `phone`, `username`, `password`) VALUES ('".$firstName."', '".$lastName."', '".$phone."', '".$username."', '".$encPass."', '".$address."', '".$city."', '".$province."', '".$postalCode."', '".$country."',)");
+            $user = Db::fetchOne("SELECT * FROM customers WHERE username='".mysqli_real_escape_string($con, $username)."'");
+            // var_dump($user);
+            if($user) {
+                // echo('reached');
+                $_SESSION["customerId"] = $user["id"];
+                // var_dump($_SESSION["customerId"]);
+                header("location: index.php?controller=cart&action=processOrder");
+            } else {
+                header("location: register.php?error");
+            }
         }
 
         public function saveInfo($firstName, $lastName, $instaUsername, $email) {
@@ -36,9 +49,18 @@
         }
 
         static public function checkLoggedIn() {
-            $user = fetchOne("SELECT * FROM users WHERE id='".$_SESSION["id"]."'");
+            $user = DB::fetchOne("SELECT * FROM users WHERE id='".$_SESSION["adminId"]."'");
             if($user){
                 return $user;
+             } else {
+                 header("location: index.php?controller=pages&action=login");
+             }
+        }
+
+        static public function checkLoggedInCustomer() {
+            $user = DB::fetchOne("SELECT * FROM customers WHERE id='".$_SESSION["CustomerId"]."'");
+            if($user){
+                header("location: index.php?controller=cart&action=billingInfo");
              } else {
                  header("location: index.php?controller=pages&action=login");
              }

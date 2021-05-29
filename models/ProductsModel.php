@@ -17,7 +17,7 @@
 
         static public function productFactory($products){
             foreach($products as &$product){
-                $product = new ProductModel($product["id"],$product["name"],$product["description"], $product["shortDescription"],$product["image"],$product["price"]);
+                $product = new ProductModel($product["id"],$product["name"],$product["description"], $product["shortDescription"],$product["image"],$product["price"], $product["quantity"]);
             }
     
             return $products;

@@ -4,11 +4,51 @@
         <h2>Register</h2>
 
         <form method="post" action="index.php?controller=pages&action=processRegister">
+            <h2>Account Information</h2>
             <div class="fieldset">
-                <input type="text" placeholder="Username" name="username"/>
+                <label for="firstName">First Name</label>
+                <input type="text" placeholder="First Name" name="firstName"/>
             </div>
             <div class="fieldset">
+                <label for="lastName">Last Name</label>
+                <input type="text" placeholder="Last Name" name="lastName"/>
+            </div>
+            <div class="fieldset">
+                <label for="username">Mobile</label>
+                <input type="text" placeholder="Mobile Number" name="phone"/>
+            </div>
+            <div class="fieldset">
+                <label for="username">Email</label>
+                <input type="text" placeholder="Email" name="username"/>
+            </div>
+            <div class="fieldset">
+                <label for="password">Password</label>
                 <input type="password" placeholder="Password" name="password"/>
+            </div>
+            <div class="fieldset">
+                <label for="confPassword">Confirm Password</label>
+                <input type="password" placeholder="Password" name="confPassword"/>
+            </div>
+            <h2>Shipping Address</h2>
+            <div class="fieldset">
+                <label for="address">Address</label>
+                <textarea type="text" placeholder="Address" name="address"> </textarea>
+            </div>
+            <div class="fieldset">
+                <label for="lastName">City</label>
+                <input type="text" placeholder="City" name="city"/>
+            </div>
+            <div class="fieldset">
+                <label for="province">Province</label>
+                <input type="text" placeholder="Province" name="province"/>
+            </div>
+            <div class="fieldset">
+                <label for="postalCode">Postal Code</label>
+                <input type="text" placeholder="Postal Code" name="postalCode"/>
+            </div>
+            <div class="fieldset">
+                <label for="country">Country</label>
+                <input type="text" placeholder="Country" name="country"/>
             </div>
             <div class="fieldset">
                 <input type="submit" value="Sign Up" class="cta-primary" />

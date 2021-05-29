@@ -5,3 +5,11 @@ https://www.youtube.com/watch?v=B5r8CcTUs5Y
 https://stackoverflow.com/questions/23241534/inserting-data-in-multiple-databases\
 
 http://sqlfiddle.com/#!2/7fd9c/1
+
+https://morioh.com/p/ccfd9524da10
+
+https://mysql.tutorials24x7.com/blog/guide-to-design-database-for-shopping-cart-in-mysql
+
+https://resources.fabric.inc/blog/answers/shopping-cart-database-design
+
+https://www.youtube.com/watch?v=0wYSviHeRbs

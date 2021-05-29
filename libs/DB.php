@@ -2,7 +2,7 @@
 
     class DB {
 
-        public function connect(){
+        static public function connect(){
             $arrConfig = parse_ini_file("../bandanaWiggles.ini");
             $host = $arrConfig['host'];
             $username = $arrConfig['username'];

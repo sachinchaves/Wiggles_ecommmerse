@@ -2,20 +2,29 @@
     <header>
         <h2>Your Cart</h2>
     </header>
-
+    <?php
+    var_dump($_SESSION["cart"]) ;
+    ?>
     <div class="contents">
         <?php
-        foreach(CartModel::getItems() as $product){
+        foreach($_SESSION["cart"] as $keys => $values){
         ?>
         <div class="item">
+            <div class="img">
+                <img src="imgs/<?=$values['productImg'];?>" alt="<?=$values['productName'];?>" /> 
+            </div>
             <div class="name">
-                <?=$product->name?>
+                <?=$values['productName'];?>
+            </div>
+            <a href="index.php?controller=cart&action=delete&id="<?=$values['productId'];?>" class="btn">Delete</a>
+            <div class="size">
+                <?=$values['productSize'];?>
             </div>
             <div class="qty">
-                1
+                <?=$values['productQuantity'];?>
             </div>
             <div class="price">
-                $<?=$product->price?>
+                <?=$values['productPrice'];?>
             </div>
         </div>
         <?php
@@ -23,8 +32,8 @@
         ?>
     </div>
     <div class="cartTotal">
-        CART TOTAL: <?=CartModel::getTotal()?>
+        CART TOTAL: <?=CartModel::getSubTotal()?>
     </div>
 
-    <a href="index.php?controller=cart&action=paymentdetails" class="btn">CHECKOUT</a>
+    <a href="index.php?controller=cart&action=checkUserStatus" class="btn">Proceed to Checkout</a>
 </div>
