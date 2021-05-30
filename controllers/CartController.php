@@ -29,12 +29,24 @@
 
         public function delete() {
             CartModel::deleteCartItem($_GET['id']);
-            header("location: index.php?controller=cart&action=checkout");
         }
 
         public function processOrder() {
             CartModel::createOrder();
         }
+
+        public function payment() {
+            CartModel::completePayment();
+        }
+
+        public function thankyou(){
+            $this->state["browserTitle"] = "Thank you";
+            CartModel::unsetItems();
+            $this->state["content"] = $this->loadView("thankyou");
+
+            $this->state["html"] = $this->loadView("template");
+        }
+
         public function error(){
 
         }

@@ -27,10 +27,10 @@
         
         }
 
-        static public function register($firstName, $lastName, $phone, $username, $password, $address, $city, $province, $postalCode) {
+        static public function register($firstName, $lastName, $phone, $username, $password, $address, $city, $province, $postalCode, $country) {
             $con = DB::connect();
             $encPass = password_hash($password, PASSWORD_DEFAULT);
-            DB::runQuery("INSERT INTO customers (`firstName`, `lastName`, `phone`, `username`, `password`) VALUES ('".$firstName."', '".$lastName."', '".$phone."', '".$username."', '".$encPass."', '".$address."', '".$city."', '".$province."', '".$postalCode."', '".$country."',)");
+            DB::runQuery("INSERT INTO customers (`firstName`, `lastName`, `phone`, `username`, `password`, `address`, `city`, `province`, `postalCode`, `country`) VALUES ('".$firstName."', '".$lastName."', '".$phone."', '".$username."', '".$encPass."', '".$address."', '".$city."', '".$province."', '".$postalCode."', '".$country."')");
             $user = Db::fetchOne("SELECT * FROM customers WHERE username='".mysqli_real_escape_string($con, $username)."'");
             // var_dump($user);
             if($user) {

@@ -80,30 +80,42 @@
 
         static public function createOrder(){
             var_dump($_SESSION["cart"]);
-            // $productName;
-            // var $customerFirstName;
-            // var $customerLastName;
-            // var $customerPhone;
-            // var $customerEmail;
-            // var $customerAddress;
-            // var $customerCity;
-            // var $customerProvince;
-            // var $customerPostalCode;
-            // var $customerCountry;
-            // var $productName;
-            // var $productPrice;
             
             // $customersArr = array();
             $customers = DB::fetchOne("SELECT * FROM customers WHERE id='".$_SESSION["customerId"]."'");
-            $products = CartModel::getItems();
-            foreach(CartModel::getItems() as $product){
-                $productId = $product->id;
-                $productName = $product->name;
-                $productName = $product->name;
-                $productName = $product->name;
-                $productName = $product->name;
+            foreach($_SESSION["cart"] as $keys => $values){
+                $productId = $values["productId"];
+                $productName = $values["productName"];
+                $productPrice = $values["productPrice"];
+                $productQuantity = $values["productQuantity"];
+                $productSize = $values["productSize"];
             }
+            $status = "pending";
+            $subtotal = CartModel::getSubtotal();
+            $tax = CartModel::getTax();
+            $total = CartModel::getTotal();
+            $firstName = $customers["firstName"];
+            $lastName = $customers["lastName"];
+            $phone = $customers["phone"];
+            $username = $customers["username"];
+            $address = $customers["address"];
+            $city = $customers["city"];
+            $province = $customers["province"];
+            $postalCode = $customers["postalCode"];
+            $country = $customers["country"];
+            // https://alvinalexander.com/php/php-date-formatted-sql-timestamp-insert/
+             $timestamp = date('Y-m-d H:i:s');
+            
             // var_dump($product);
+            $con = DB::connect();
+            $sql = ("INSERT INTO orders (customerId, status, subtotal, tax, total, firstname, lastName, phone, email, address, city, province, postalCode, country, createdAt ) VALUES ('".$_SESSION["customerId"]."', 'pending', '".$subtotal."', '".$tax."', '".$total."', '".$firstName."', '".$lastName."', '".$phone."', '".$username."', '".$address."', '".$city."', '".$province."', '".$postalCode."', '".$country."', '".$timestamp."')");
+            mysqli_query($con,$sql);
+
+            $orderId = mysqli_insert_id($con);
+            $_SESSION["orderId"] = $orderId;
+            DB::runQuery("INSERT INTO order_items (productId, orderId, price, quantity, createdAt) VALUES ('".$productId."', '".$orderId."', '".$productPrice."', '".$productQuantity."', '".$timestamp."') ");
+
+            header("location: index.php?controller=cart&action=payment");
 
         }
 
@@ -114,6 +126,29 @@
                 }
             }
             header("location: index.php?controller=cart&action=checkout");
+        }
+
+        static public function completePayment() {
+            $timestamp = date('Y-m-d H:i:s');
+            DB::runQuery("INSERT INTO transactions (customerId, orderId, paymentMode, createdAt) VALUES ('".$_SESSION["customerId"]."', '".$_SESSION["orderId"]."', 'Credit Card', '".$timestamp."')");
+            $products = DB::fetchOne("SELECT productId, quantity FROM order_items WHERE orderId='".$_SESSION["orderId"]."' ");
+            
+            foreach($products as $product) {
+                $quantity = DB::fetchOne("SELECT quantity FROM products WHERE id='".$products["productId"]."' ");
+                if($quantity["quantity"] >= $products["quantity"]){
+                    DB::runQuery("UPDATE products SET quantity = '".$quantity["quantity"]."' - '".$products["quantity"]."' WHERE id='".$products["productId"]."' ");
+                }else {
+                    echo 'does not work';
+                }
+            }
+
+            DB::runQuery("UPDATE orders SET `status`='completed' WHERE id= id='".$_SESSION["orderId"]."' ");
+            header("location: index.php?controller=cart&action=thankYou");
+        }
+
+        static public function unsetItems(){
+            unset($_SESSION["cart"]);
+            unset($_SESSION["orderId"]);
         }
     }
 ?>

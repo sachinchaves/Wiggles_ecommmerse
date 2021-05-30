@@ -61,6 +61,7 @@
             $this->state["browserTitle"] = "Wiggles | Register";
 
             $this->state["content"] = $this->loadView("register");
+            // $this->state["content"] .= $this->loadView("order_summary");
 
             $this->state["html"] = $this->loadView("template");
         }
@@ -123,14 +124,6 @@
             $this->state["html"] = $this->loadView("template");
         }
         
-        public function thankyou(){
-            $this->state["browserTitle"] = "Thank you";
-
-            $this->state["content"] = $this->loadView("thankyou");
-
-            $this->state["html"] = $this->loadView("template");
-        }
-
         public function error(){
             $this->state["errorMsg"] = "Action not found";
             $this->state["content"] = $this->loadView("error");

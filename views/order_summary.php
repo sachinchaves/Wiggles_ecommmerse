@@ -6,7 +6,7 @@
 
         <div class="contents">
             <?php
-            foreach(CartModel::getItems() as $product){
+            foreach($_SESSION["cart"] as $product){
             ?>
             <div class="item">
                 <div class="name">
