@@ -17,7 +17,7 @@
                     <a href="index.php?controller=pages&action=about">About</a>
                   </li>
                   <li>
-                    <a href="index.php?controller=pages&action=about">Contact Us</a>
+                    <a href="index.php?controller=pages&action=contact">Contact Us</a>
                   </li>
                   <li>
                     <a href="index.php?controller=cart&action=checkout"><i class="fas fa-shopping-cart"></i><span class="cartCount"><?=CartModel::getNumItemsInCart()?></span></a>

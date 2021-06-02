@@ -6,17 +6,21 @@
 
         <div class="contents">
             <?php
-            foreach($_SESSION["cart"] as $product){
+            foreach($_SESSION["cart"] as $keys => $values){
             ?>
             <div class="item">
-                <div class="name">
-                    <?=$product->name?>
+                <div class="productName">
+                    <?=$values["productName"]?>
                 </div>
-                <div class="qty">
-                    1
+                <div class="productQty">
+                    <?=$values["productQuantity"]?>
                 </div>
-                <div class="price">
-                    $<?=$product->price?>
+                
+                <div class="productSize">
+                <?=$values["productSize"]?>
+                </div>
+                <div class="productPrice">
+                    $<?=$values["productPrice"]?>
                 </div>
             </div>
             <?php

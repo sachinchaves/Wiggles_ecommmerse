@@ -7,5 +7,5 @@
                 ProductModel::buildDropDown($animalTypeOptions, $_POST["sizeId"]);
                 ?>
             </select>
-            <input type="submit" value="Filter"/>
+            <input type="submit"  class="cta-secondary" value="Filter"/>
         </form>

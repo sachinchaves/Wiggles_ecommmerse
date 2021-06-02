@@ -17,7 +17,16 @@
         }
 
         public function about(){
-            $this->state['content'] = 'about';
+            $this->state["content"] = $this->loadView("navbar");
+            $this->state["content"] .= $this->loadView("about");
+            $this->state["content"] .= $this->loadView("footer");
+            $this->state["html"] = $this->loadView("template");
+        }
+
+        public function contact(){
+            $this->state["content"] = $this->loadView("navbar");
+            $this->state["content"] .= $this->loadView("contact");
+            $this->state["content"] .= $this->loadView("footer");
             $this->state["html"] = $this->loadView("template");
         }
 
@@ -32,10 +41,10 @@
             // custom page content here
             $this->state["content"] = $this->loadView("navbar");
             $this->state["products"] = ProductsModel::getAll();
-            
-            $this->state["content"] .= $this->loadView("products-grid");
-            $this->state["content"] .= $this->loadView("filter");
-            $this->state["content"] .= $this->loadView("products-grid");
+            $this->state["productItems"] = $this->loadView("filter");
+            $this->state["productItems"] .= $this->loadView("products-grid");
+            $this->state["content"] .= $this->loadView("products");
+            $this->state["content"] .= $this->loadView("footer");
             $this->state["html"] = $this->loadView("template");
         }
 
