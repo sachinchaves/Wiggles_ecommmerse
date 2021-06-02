@@ -4,25 +4,27 @@
 
         static public function login($username, $password, $loginType) {
             $dbName = ($loginType == "adminUser") ? "users" : "customers";
-            $redirectLink = ($loginType == "adminUser") ? "index.php?controller=pages&action=dashboard": "index.php?controller=cart&action=billingInfo";
+             
+            $redirectLink = ($loginType == "adminUser") ? "index.php?controller=pages&action=dashboard": "index.php?controller=cart&action=processOrder";
+            $errorRedirectLink = ($loginType == "adminUser") ? "ocation: index.php?controller=pages&action=adminLogin&status=error": "ocation: index.php?controller=pages&action=login&status=error";
             $sessionVal = ($loginType == "adminUser") ? "adminId" : "customerId";
             $con = DB::connect();
             $user = DB::fetchOne("SELECT * FROM $dbName WHERE username='". mysqli_real_escape_string($con, $username)."'");
-            // return $user;
-            echo "Error, Please fill in the correct details";
+            
             if($user) {
                 $_SESSION[$sessionVal] = $user["id"];
+                echo $_SESSION[$sessionVal];
                 $encPassword = $user["password"];
                 $providedPassword = $_POST["password"];
                 if(password_verify($providedPassword, $encPassword)){
                     header("location: $redirectLink");
                 }else {
-                    header("location: index.php?controller=pages&action=login&status=error");
+                    header("location: $errorRedirectLink");
                 }
                 
             } else {
                 echo "Error, Please fill in the correct details";
-                header("location: index.php?controller=pages&action=login&status=error");
+                header("location: $errorRedirectLink");
             }
         
         }
@@ -45,7 +47,7 @@
 
         public function saveInfo($firstName, $lastName, $instaUsername, $email) {
             DB::runQuery("INSERT INTO members (`firstName`, `lastName`, `instaUsername`, `email`) VALUES ('".$firstName."', '".$lastName."', '".$instaUsername."','".$email."')");
-            header("location: index.php?controller=pages&action=thankyou");
+            // header("location: index.php?controller=pages&action=thankyou");
         }
 
         static public function checkLoggedIn() {
@@ -53,7 +55,7 @@
             if($user){
                 return $user;
              } else {
-                 header("location: index.php?controller=pages&action=login");
+                 header("location: index.php?controller=pages&action=adminLogin");
              }
         }
 

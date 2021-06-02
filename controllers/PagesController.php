@@ -9,9 +9,10 @@
 
             $this->state["products"] = ProductsModel::getTopProd();
             $this->state["topProducts"] = $this->loadView("products-grid");
-            
+            $this->state["topProducts"] = $this->loadView("top-products");
             $this->state["content"] = $this->loadView("navbar");
             $this->state["content"] .= $this->loadView("home");
+            $this->state["content"] .= $this->loadView("footer");
             $this->state["html"] = $this->loadView("template");
         }
 
@@ -57,6 +58,14 @@
             $this->state["html"] = $this->loadView("template");
         }
 
+        public function adminLogin(){
+            $this->state["browserTitle"] = "Wiggles | Login";
+
+            $this->state["content"] = $this->loadView("adminLogin");
+
+            $this->state["html"] = $this->loadView("template");
+        }
+
         public function register(){
             $this->state["browserTitle"] = "Wiggles | Register";
 
@@ -69,11 +78,13 @@
         public function dashboard(){
             $this->state["browserTitle"] = "Wiggles | Dashboard";
             $this->state["products"] = ProductsModel::getAll();
-            $this->state["content"] = $this->loadView("dashboard");
+            $this->state["content"] = $this->loadView("adminNav");
+            $this->state["content"] .= $this->loadView("dashboard");
             $this->state["html"] = $this->loadView("template");
         }
 
         public function processLogin(){
+            echo 'reacher here';
             UserModel::login($_POST["username"], $_POST["password"], $_POST["loginType"]);
     
         }
@@ -113,8 +124,19 @@
             $this->state["html"] = $this->loadView("template");
         }
 
+        public function viewOrders(){
+            $this->state["orders"] = ProductsModel::viewOrders();
+            $this->state["content"] = $this->loadView("viewOrder");
+            $this->state["html"] = $this->loadView("template");
+        }
+
         public function saveProduct(){
             ProductsModel::saveProduct($_POST["name"], $_POST["shortDescription"], $_POST["description"], $_POST["price"], $_POST["featured"], $_POST["topSelling"]);
+        }
+
+        public function deleteOrderAdmin(){
+            echo "controller";
+            ProductsModel::deleteOrder($_GET["recordID"]);
         }
 
 

@@ -29,7 +29,7 @@
                 $productArray["shortDescription"],
                 $productArray["image"],
                 $productArray["price"],
-                $productArray["quantity"]
+                $productArray["ProductQuantity"]
             );
     
             // object

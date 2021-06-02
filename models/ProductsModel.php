@@ -17,7 +17,7 @@
 
         static public function productFactory($products){
             foreach($products as &$product){
-                $product = new ProductModel($product["id"],$product["name"],$product["description"], $product["shortDescription"],$product["image"],$product["price"], $product["quantity"]);
+                $product = new ProductModel($product["id"],$product["name"],$product["description"], $product["shortDescription"],$product["image"],$product["price"], $product["productQuantity"]);
             }
     
             return $products;
@@ -44,6 +44,17 @@
             
             $products = DB::fetchAll("SELECT * FROM products WHERE $filter ");
             return ProductsModel::productFactory($products);
+        }
+
+        static public function viewOrders(){
+            $orderList = DB::fetchAll("SELECT * FROM transactions INNER JOIN orders ON transactions.orderId=orders.id INNER JOIN order_items ON orders.Id= order_items.orderId INNER JOIN products ON order_items.productId= products.id ");
+            return $orderList;
+        }
+
+        static public function deleteOrder($recordId) {
+            echo "reached here";
+            DB::runQuery("DELETE FROM orders WHERE id='".$recordId."' ");
+            header("location: index.php?controller=pages&action=viewOrder");
         }
 
     }

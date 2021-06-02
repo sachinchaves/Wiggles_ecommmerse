@@ -37,7 +37,7 @@
         }
 
         static public function getNumItemsInCart(){
-            return count( $_SESSION["cart"] );
+            return (isset($_SESSION["cart"])) ? count($_SESSION["cart"]) : 0;
         }
 
         static public function getItems(){
@@ -108,12 +108,12 @@
             
             // var_dump($product);
             $con = DB::connect();
-            $sql = ("INSERT INTO orders (customerId, status, subtotal, tax, total, firstname, lastName, phone, email, address, city, province, postalCode, country, createdAt ) VALUES ('".$_SESSION["customerId"]."', 'pending', '".$subtotal."', '".$tax."', '".$total."', '".$firstName."', '".$lastName."', '".$phone."', '".$username."', '".$address."', '".$city."', '".$province."', '".$postalCode."', '".$country."', '".$timestamp."')");
+            $sql = ("INSERT INTO orders (customerId, status, subtotal, tax, total, firstname, lastName, phone, email, address, city, province, postalCode, country, orderCreatedAt ) VALUES ('".$_SESSION["customerId"]."', 'pending', '".$subtotal."', '".$tax."', '".$total."', '".$firstName."', '".$lastName."', '".$phone."', '".$username."', '".$address."', '".$city."', '".$province."', '".$postalCode."', '".$country."', '".$timestamp."')");
             mysqli_query($con,$sql);
 
             $orderId = mysqli_insert_id($con);
             $_SESSION["orderId"] = $orderId;
-            DB::runQuery("INSERT INTO order_items (productId, orderId, price, quantity, createdAt) VALUES ('".$productId."', '".$orderId."', '".$productPrice."', '".$productQuantity."', '".$timestamp."') ");
+            DB::runQuery("INSERT INTO order_items (productId, orderId, price, quantity, orderItemCreatedAt) VALUES ('".$productId."', '".$orderId."', '".$productPrice."', '".$productQuantity."', '".$timestamp."') ");
 
             header("location: index.php?controller=cart&action=payment");
 
@@ -134,15 +134,15 @@
             $products = DB::fetchOne("SELECT productId, quantity FROM order_items WHERE orderId='".$_SESSION["orderId"]."' ");
             
             foreach($products as $product) {
-                $quantity = DB::fetchOne("SELECT quantity FROM products WHERE id='".$products["productId"]."' ");
-                if($quantity["quantity"] >= $products["quantity"]){
-                    DB::runQuery("UPDATE products SET quantity = '".$quantity["quantity"]."' - '".$products["quantity"]."' WHERE id='".$products["productId"]."' ");
+                $quantity = DB::fetchOne("SELECT productQuantity FROM products WHERE id='".$products["productId"]."' ");
+                if($quantity["productQuantity"] >= $products["quantity"]){
+                    DB::runQuery("UPDATE products SET quantity = '".$quantity["productQuantity"]."' - '".$products["quantity"]."' WHERE id='".$products["productId"]."' ");
                 }else {
                     echo 'does not work';
                 }
             }
 
-            DB::runQuery("UPDATE orders SET `status`='completed' WHERE id= id='".$_SESSION["orderId"]."' ");
+            DB::runQuery("UPDATE orders SET `status`='Placed' WHERE id='".$_SESSION["orderId"]."' ");
             header("location: index.php?controller=cart&action=thankYou");
         }
 

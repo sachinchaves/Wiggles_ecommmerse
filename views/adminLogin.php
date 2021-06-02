@@ -6,7 +6,7 @@
             <h2>Login</h2>
 
             <form method="post" action="index.php?controller=pages&action=processLogin">
-                <input type="hidden" name="loginType" value="customers">
+                <input type="hidden" name="loginType" value="adminUser">
                 <div class="fieldset">
                     <input type="text" placeholder="Username" name="username"/>
                 </div>

@@ -36,6 +36,11 @@
         }
 
         public function payment() {
+            $this->state["content"] = $this->loadView("payment");
+            $this->state["html"] = $this->loadView("template");
+        }
+
+        public function completePayment() {
             CartModel::completePayment();
         }
 
