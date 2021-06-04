@@ -1,15 +1,24 @@
+
 <div id="paymentOptions">
-    <div class="box">
+    <div class="box siteContainer">
+        <div class="logoContainer">
+            <h1 class="logo">Wiggles | The Pet Bandana shop</h1>
+        </div>
         <h2>Payment Information</h2>
-        <form action="index.php?controller=cart&action=completePayment" method="POST">
+        <form action="index.php?controller=cart&action=completePayment" method="POST" id="paymentForm">
             <div class="fieldset">
                 <label for="nameOnCard">Name on Credit Card</label>
-                <input type="text" placeholder="First Name" name="nameOnCard"/>
+                <input type="text" placeholder="First Name" name="nameOnCard" class="required" />
+                <div class="errorMsg">
+                    <p>Please enter name on Credit card</p>
+                </div>
             </div>
             <div class="fieldset">
                 <label for="cardNumber">Credit Card Number</label>
-                <input type="number" placeholder="4242 4242 4242" name="cardNumber"/>
-                <img src="" alt="">
+                <input type="number" placeholder="4242 4242 4242" name="cardNumber" class="required" />
+                <div class="errorMsg">
+                    <p>Please enter the credit card number</p>
+                </div>
             </div>
             <div class="fieldset">
                 <label for="expiry">Expires on</label>
@@ -40,12 +49,16 @@
             </div>
             <div class="fieldset">
                 <label for="cvv">CVV</label>
-                <input type="number" placeholder="4242" name="cvv"/>
-                <small>What is CVV?</small>
+                <input type="number" placeholder="4242" name="cvv" class="required" />
+                <div class="errorMsg">
+                    <p>Please enter CVV</p>
+                </div>
+                <!-- <small>What is CVV?</small> -->
             </div>
-            <div class="fieldset">
-                <input type="submit" value="Pay Now" />
+            <div class="fieldset submitWrapper">
+                <input type="submit" class="cta-primary submitBtn" value="Pay Now" />
             </div>
         </form>
     </div>
 </div>
+<script src="js/main.js"></script>

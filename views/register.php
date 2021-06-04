@@ -2,7 +2,7 @@
     <div class="siteContainer">
         <div class="formcontainer">
             <div class="logoContainer">
-            <h1 class="logo">Wiggles | The Pet Bandana shop</h1>
+                <h1 class="logo">Wiggles | The Pet Bandana shop</h1>
             </div>
             <h2>Register</h2>
 

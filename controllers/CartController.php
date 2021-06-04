@@ -38,6 +38,7 @@
 
         public function payment() {
             $this->state["content"] = $this->loadView("payment");
+            $this->state["content"] .= $this->loadView("order_summary");
             $this->state["html"] = $this->loadView("template");
         }
 

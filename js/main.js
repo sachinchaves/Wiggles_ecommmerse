@@ -48,4 +48,10 @@ const Validator = function(element){
 }
 
 
-const validator = new Validator("customerForm");
+if (document.getElementById("customerForm")) {
+    const validator = new Validator("customerForm");
+}else if (document.getElementById("paymentForm")){
+    const validator = new Validator("paymentForm");
+}
+
+

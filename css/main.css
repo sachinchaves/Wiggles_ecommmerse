@@ -133,7 +133,7 @@ label, .fieldset{
     padding: 5px 0 15px;
 }
 
-.fieldset input{
+.fieldset input, select{
     border: 1px solid #B3B3B3;
     padding: 10px 11px;
     border-radius: 3px;
@@ -545,7 +545,7 @@ select {
     padding-bottom: 60px;
 }
 
-.accountInfo .fieldset, .accountInfo .fieldset input, .shippingAdd .fieldset, .shippingAdd .fieldset input, textarea {
+.accountInfo .fieldset, .accountInfo .fieldset input, .shippingAdd .fieldset, .shippingAdd .fieldset input, textarea , #paymentOptions .fieldset, #paymentOptions .fieldset input{
     width: 400px;
     max-width: 100%;
 }
@@ -571,6 +571,48 @@ textarea {
     margin-top: 10px;
 }
 
+#paymentOptions .fieldset label {
+    display: block;
+}
+
+#paymentOptions .fieldset {
+    padding-top: 10px;
+    height: 102px;
+}
+
+#paymentOption h2 {
+    margin-top: 40px;
+}
+
+#orderSummary .orderContainer{
+    margin-top: 30px;
+    border: 1px solid var(--tertiary);
+    width:400px;
+    max-width: 100%;
+    padding:25px 20px;
+}
+
+#orderSummary .orderContainer h2 {
+    border-bottom: 2px solid var(--tertiary);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+#orderSummary .orderContainer .item {
+    padding-bottom: 20px;
+}
+
+.cartSubTotal {
+    border-top: 1px solid var(--tertiary);
+    padding-top: 5px;
+}
+#orderSummary .productPrice, .cartSubTotal, .shipping, .cartTax, .cartTotal {
+    text-align: right;
+}
+
+#orderSummary .productName {
+    width: 200px;
+}
 
 @media screen and (min-width: 992px) {
 
@@ -627,6 +669,7 @@ textarea {
     #register .fieldset {
         margin-right:15px;
     }
+
     
 }
 
@@ -647,7 +690,17 @@ textarea {
         display: block;
     }
 
-    #register .address {
-        width:100%;
+    #paymentOptions, #orderSummary {
+        width: 50%;
+        float: left;
     }
+
+    #orderSummary {
+        margin-top: 90px;
+    }
+
+    #paymentOptions .logoContainer {
+        margin-bottom: 30px;
+    }
+
 }
