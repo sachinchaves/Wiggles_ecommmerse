@@ -149,7 +149,7 @@ label, .fieldset{
     height: 73px;
 }
 
-#hero, #subscribe, .thankyou, #login, #register{
+#hero, #subscribe, .thankyou, #login{
     background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../imgs/bg.png) center repeat;
 }
 
@@ -337,7 +337,7 @@ label, .fieldset{
     padding-top:40px;
 }
 
-#login .fieldset, #register .fieldset{
+#login .fieldset{
     display: block;
     margin: 0 auto;
 }
@@ -415,7 +415,7 @@ span.orignalPrice {
     font-size: 18px;
 }
 
-#features {
+#features, #register {
     background: var(--background);
 }
 
@@ -497,6 +497,81 @@ select {
     width: 250px;
     max-width: 100%;
 }
+
+.productWrapper .cta-primary a {
+    color:#FFFFFF;
+}
+
+#cart {
+    padding: 30px 0 60px 0;
+}
+
+#cart .price, #cart .cartTotal {
+    float: right;
+}
+
+#cart .cta-primary {
+    float: right;
+    margin-top:20px
+}
+
+#cart h2 {
+    padding-top:40px;
+}
+
+#cart h3 {
+    padding-top:10px;
+    padding-bottom:15px;
+}
+
+.cartTotalContainer {
+    padding: 15px 0;
+    border-top: 1px solid var(--tertiary);
+}
+
+#cart .contents {
+    overflow: auto;
+    padding-bottom: 20px;
+}
+
+#cart .item {
+    margin-bottom: 25px;
+}
+
+#register {
+    height: 100%;
+    background-repeat: repeat;
+    text-align: left;
+    padding-bottom: 60px;
+}
+
+.accountInfo .fieldset, .accountInfo .fieldset input, .shippingAdd .fieldset, .shippingAdd .fieldset input, textarea {
+    width: 400px;
+    max-width: 100%;
+}
+
+.logoContainer {
+    text-align: center;
+}
+
+#register h3 {
+    color: var(--tertiary);
+}
+
+.accountInfo {
+    padding-top:30px;
+    padding-bottom:25px;
+}
+
+.shippingAdd {
+    padding-bottom: 15px;
+}
+
+textarea {
+    margin-top: 10px;
+}
+
+
 @media screen and (min-width: 992px) {
 
     h2 {
@@ -548,6 +623,10 @@ select {
     .hero p {
         font-size: 18px;
     }
+
+    #register .fieldset {
+        margin-right:15px;
+    }
     
 }
 
@@ -557,6 +636,18 @@ select {
     }
 
     .productWrapper {
+        width:100%;
+    }
+
+    #register .address label {
+        display: block;
+    }
+
+    #register .address label {
+        display: block;
+    }
+
+    #register .address {
         width:100%;
     }
 }
