@@ -340,6 +340,15 @@ label, .fieldset{
 #login .fieldset{
     display: block;
     margin: 0 auto;
+    height: 91px;
+}
+
+#login .fieldset label{
+    display: block;
+}
+#login h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 #dashboard strong {
@@ -614,6 +623,32 @@ textarea {
     width: 200px;
 }
 
+#login .formcontainer {
+    width: 265px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#login .errorMsg p{
+    padding-left: 34px;
+}
+
+#orderSummary, #paymentOptions {
+    padding-left: 20px;
+}
+
+#contactforms .fieldset, #contactforms .fieldset input {
+    width: 400px;
+    max-width: 100%;
+}
+
+#contactforms .fieldset label {
+    display: block;
+}
+
+#contactforms .fieldset {
+    height: 100px;
+}
 @media screen and (min-width: 992px) {
 
     h2 {

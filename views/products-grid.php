@@ -34,7 +34,7 @@
                 </select>
             </div>
             
-            <input type="submit" class="cta-primary" name="addToCart" value="Add To Cart">    
+            <input type="submit" class="cta-primary hide" name="addToCart" value="Add To Cart">    
         </form>   
     </div> 
           

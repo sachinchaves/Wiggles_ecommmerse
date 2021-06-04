@@ -1,7 +1,7 @@
 <div id="cart">
     <div class="siteContainer">
         <header>
-            <h1 class="logo">Wiggles | The Pet Bandana shop</h1>
+        <a href="index.php?controller=pages&action=default"><h1 class="logo">Wiggles | The Pet Bandana shop</h1></a>
             <h2>Shopping Cart</h2>
         </header>
         <div class="row">

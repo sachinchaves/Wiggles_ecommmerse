@@ -112,6 +112,11 @@
     
         }
 
+        public function saveContactInfo(){
+            UserModel::saveContactInfo($_POST["name"], $_POST["email"], $_POST["phone"], $_POST["message"]);
+    
+        }
+
         public function editProductDetails(){
             $this->state["product"] = ProductModel::get($_GET["product_id"]);
             $this->state["content"] = $this->loadView("editProductDetails");

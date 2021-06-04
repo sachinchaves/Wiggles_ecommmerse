@@ -68,5 +68,11 @@
              }
         }
 
+        static public function saveContactInfo($name, $email, $phone, $message) {
+            DB::runQuery("INSERT INTO enquiry (`name`, `email`, `phone`, `message`) VALUES ('".$firstName."', '".$lastName."', '".$email."','".$phone."', '".$message."')");
+            header("location: index.php?controller=pages&action=thankyou");
+        }
+
+
     }
 ?>

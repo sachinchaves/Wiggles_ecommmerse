@@ -48,8 +48,9 @@
 
         public function thankyou(){
             $this->state["browserTitle"] = "Thank you";
+            $this->state["content"] = $this->loadView("navbar");
             CartModel::unsetItems();
-            $this->state["content"] = $this->loadView("thankyou");
+            $this->state["content"] .= $this->loadView("thankyou");
 
             $this->state["html"] = $this->loadView("template");
         }

@@ -2,7 +2,7 @@
     <div class="siteContainer">
         <div class="formcontainer">
             <div class="logoContainer">
-                <h1 class="logo">Wiggles | The Pet Bandana shop</h1>
+            <a href="index.php?controller=pages&action=default"><h1 class="logo">Wiggles | The Pet Bandana shop</h1></a>
             </div>
             <h2>Register</h2>
 

@@ -2,7 +2,7 @@
 <div id="paymentOptions">
     <div class="box siteContainer">
         <div class="logoContainer">
-            <h1 class="logo">Wiggles | The Pet Bandana shop</h1>
+            <a href="index.php?controller=pages&action=default"><h1 class="logo">Wiggles | The Pet Bandana shop</h1></a>
         </div>
         <h2>Payment Information</h2>
         <form action="index.php?controller=cart&action=completePayment" method="POST" id="paymentForm">

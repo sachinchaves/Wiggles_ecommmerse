@@ -52,6 +52,10 @@ if (document.getElementById("customerForm")) {
     const validator = new Validator("customerForm");
 }else if (document.getElementById("paymentForm")){
     const validator = new Validator("paymentForm");
+}else if (document.getElementById("customerForm")){
+    const validator = new Validator("customerForm");
+}else if (document.getElementById("contactforms")){
+    const validator = new Validator("contactforms");
 }
 
 
