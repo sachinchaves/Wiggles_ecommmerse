@@ -1,0 +1,13 @@
+Wiggles| Pet Bandana
+
+URL : http://sachinchaves.com/wiggles/
+
+
+ADMIN 
+Admin URl: http://sachinchaves.com/wiggles/index.php?controller=pages&action=adminLogin
+
+username: sachinchaves
+password: 1234
+
+
+LANDING PAGE URL : http://sachinchaves.com/wiggles/index.php?controller=pages&action=landing

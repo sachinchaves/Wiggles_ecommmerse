@@ -1,0 +1,1 @@
+<p class="error">You have an error: <?=$this->state["errorMsg"]?></p>

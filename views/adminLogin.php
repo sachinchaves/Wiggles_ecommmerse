@@ -16,7 +16,6 @@
                 <div class="fieldset">
                     <input type="submit" value="Login Now" class="cta-primary" />
                 </div>
-                <p>Don't have an account? <a href="index.php?controller=pages&action=register">Register</a></p>
             </form>
         </div>
     </div>
