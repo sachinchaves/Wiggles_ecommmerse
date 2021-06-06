@@ -8,7 +8,7 @@
         public function checkout() {
             $this->state["pageTitle"] = "Cart Contents";
             $this->state["browserTitle"] = "Your Cart Contents";
-            $this->state["orderSummary"] = $this->loadView("order_summary");
+            // $this->state["orderSummary"] = $this->loadView("order_summary");
             $this->state["content"] = $this->loadView("cart_contents");
            
             $this->state["html"] = $this->loadView("template");
@@ -34,6 +34,10 @@
 
         public function processOrder() {
             CartModel::createOrder();
+        }
+
+        public function updateQuantity() {
+            CartModel::getSubTotal();
         }
 
         public function payment() {

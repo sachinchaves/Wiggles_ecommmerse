@@ -3,6 +3,7 @@
     class CartModel {
         
         static public function addItemToCart($itemId, $itemImg, $itemName, $itemPrice, $itemQuantity, $itemSize){
+            var_dump($itemQuantity);
             if(isset($_SESSION["cart"])){
                 $item_array_id = array_column($_SESSION["cart"], 'productId');
                 if(!in_array($itemId, $item_array_id)){
@@ -20,6 +21,7 @@
                 }
                 else {
                     echo "Item already exixts";
+                    // header("location: index.php?controller=cart&action=checkout");
                 }
             }
             else {
@@ -56,7 +58,7 @@
             foreach($_SESSION["cart"] as $key => $values)
             {
                 // object
-                $totalPrice = $totalPrice + $values['productPrice'];
+                $totalPrice = $totalPrice + ($values['productPrice'] * $values['productQuantity']);
             }
             
             // Array

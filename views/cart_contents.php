@@ -28,6 +28,7 @@
                                         <p>Size: <?=$values['productSize'];?></p>
                                     </div>
                                     <div class="qty">
+
                                         <p>Quantity: <?=$values['productQuantity'];?></p>
                                     </div>
                                 </div>
@@ -49,7 +50,7 @@
             </div>
             <div class="col-12-s col-12-m cartTotalContainer">
                 <div class="cartTotal">
-                        CART TOTAL: <?=CartModel::getSubTotal()?>
+                        CART TOTAL : <?=CartModel::getSubTotal()?>
                     </div>
                 </div>
                 <a href="index.php?controller=cart&action=checkUserStatus" class="btn cta-primary">Proceed to Checkout</a>
@@ -57,3 +58,4 @@
        
     </div>
 </div>
+
