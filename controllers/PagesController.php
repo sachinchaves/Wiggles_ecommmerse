@@ -17,6 +17,7 @@
         }
 
         public function about(){
+            $this->state["browserTitle"] = "Wiggles | About";
             $this->state["content"] = $this->loadView("navbar");
             $this->state["content"] .= $this->loadView("about");
             $this->state["content"] .= $this->loadView("footer");
@@ -24,6 +25,7 @@
         }
 
         public function contact(){
+            $this->state["browserTitle"] = "Wiggles | Contact";
             $this->state["content"] = $this->loadView("navbar");
             $this->state["content"] .= $this->loadView("contact");
             $this->state["content"] .= $this->loadView("footer");
@@ -31,7 +33,7 @@
         }
 
         public function products(){
-            $this->state["pageTitle"] = "Products";
+            $this->state["browserTitle"] = "Wiggles | Products";
             // $this->state["browserTitle"] = "Cool Products";
     
             // $this->state["content"] = $this->loadView("navbar");
@@ -49,6 +51,7 @@
         }
 
         public function product_details(){
+            $this->state["browserTitle"] = "Wiggles | Product Details";
             $this->state["product"] = ProductModel::get($_GET["product_id"]);
         
             $this->state["pageTitle"] = "Product: ".$this->state["product"]->name;
@@ -68,7 +71,7 @@
         }
 
         public function adminLogin(){
-            $this->state["browserTitle"] = "Wiggles | Login";
+            $this->state["browserTitle"] = "Wiggles | Admin Login";
 
             $this->state["content"] = $this->loadView("adminLogin");
 

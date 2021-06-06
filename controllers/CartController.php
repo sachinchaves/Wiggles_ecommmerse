@@ -6,7 +6,7 @@
         }
 
         public function checkout() {
-            $this->state["pageTitle"] = "Cart Contents";
+            // $this->state["pageTitle"] = "Cart Contents";
             $this->state["browserTitle"] = "Your Cart Contents";
             // $this->state["orderSummary"] = $this->loadView("order_summary");
             $this->state["content"] = $this->loadView("cart_contents");
@@ -20,8 +20,8 @@
         }
 
         public function billingInfo(){
-            $this->state["pageTitle"] = "Cart Contents";
-            $this->state["browserTitle"] = "Your Cart Contents";
+            // $this->state["pageTitle"] = "Cart Contents";
+            $this->state["browserTitle"] = "Cart | Billing Info";
             $this->state["content"] = $this->loadView("navbar");
             $this->state["content"] .= $this->loadView("order_summary");
             $this->state["content"] .= $this->loadView("billing_info");
@@ -41,6 +41,7 @@
         }
 
         public function payment() {
+            $this->state["browserTitle"] = "Cart | Payment";
             $this->state["content"] = $this->loadView("payment");
             $this->state["content"] .= $this->loadView("order_summary");
             $this->state["html"] = $this->loadView("template");
