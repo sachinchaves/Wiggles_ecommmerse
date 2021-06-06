@@ -34,8 +34,8 @@
             header("location: index.php?controller=pages&action=dashboard");
         }
 
-        static public function saveProduct($name, $shortDescription, $description, $price, $featured, $topSelling){
-            DB::runQuery("INSERT INTO products (name, shortDescription, description, price, featured, topSelling ) VALUES ('".$name."', '".$shortDescription."', '".$description."', '".$price."', '".$featured."', '".$topSelling."')");
+        static public function saveProduct($name, $shortDescription, $description, $price, $featured, $topSelling, $sizeId, $colourId, $productQuantity){
+            DB::runQuery("INSERT INTO products (name, shortDescription, description, price, featured, topSelling, sizeId, colourId, productQuantity ) VALUES ('".$name."', '".$shortDescription."', '".$description."', '".$price."', '".$featured."', '".$topSelling."', '".$sizeId."', '".$colourId."', '".$productQuantity."')");
             header("location: index.php?controller=pages&action=dashboard");
         }
 
@@ -52,9 +52,8 @@
         }
 
         static public function deleteOrder($recordId) {
-            echo "reached here";
-            DB::runQuery("DELETE FROM orders WHERE id='".$recordId."' ");
-            header("location: index.php?controller=pages&action=viewOrder");
+            DB::runQuery("DELETE * FROM orders WHERE id='".$recordId."' ");
+            header("location: index.php?controller=pages&action=viewOrders");
         }
 
     }

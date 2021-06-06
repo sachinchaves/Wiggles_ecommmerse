@@ -93,7 +93,6 @@
         }
 
         public function processLogin(){
-            echo 'reacher here';
             UserModel::login($_POST["username"], $_POST["password"], $_POST["loginType"]);
     
         }
@@ -127,8 +126,10 @@
         }
 
         public function editProductDetails(){
+
+            $this->state["content"] = $this->loadView("adminNav");
             $this->state["product"] = ProductModel::get($_GET["product_id"]);
-            $this->state["content"] = $this->loadView("editProductDetails");
+            $this->state["content"] .= $this->loadView("editProductDetails");
             $this->state["html"] = $this->loadView("template");
     
         }
@@ -142,26 +143,30 @@
         }
 
         public function addProduct() {
-            $this->state["browserTitle"] = "Wiggles | Dashboard";
-            $this->state["content"] = $this->loadView("addProduct");
+            $this->state["browserTitle"] = "Wiggles | Add Product";
+            $this->state["content"] = $this->loadView("adminNav");
+            $this->state["content"] .= $this->loadView("addProduct");
             $this->state["html"] = $this->loadView("template");
         }
 
         public function viewOrders(){
+            $this->state["content"] = $this->loadView("adminNav");
             $this->state["orders"] = ProductsModel::viewOrders();
-            $this->state["content"] = $this->loadView("viewOrder");
+            $this->state["content"] .= $this->loadView("viewOrder");
             $this->state["html"] = $this->loadView("template");
         }
 
         public function saveProduct(){
-            ProductsModel::saveProduct($_POST["name"], $_POST["shortDescription"], $_POST["description"], $_POST["price"], $_POST["featured"], $_POST["topSelling"]);
+            ProductsModel::saveProduct($_POST["name"], $_POST["shortDescription"], $_POST["description"], $_POST["price"], $_POST["featured"], $_POST["topSelling"], $_POST["sizeId"], $_POST["colourId"], $_POST["productQuantity"]);
         }
 
         public function deleteOrderAdmin(){
-            echo "controller";
             ProductsModel::deleteOrder($_GET["recordID"]);
         }
 
+        public function changeOrderStatus() {
+            CartModel::updateOrderStatus($_GET["recordID"]);
+        }
 
         public function filter() {
             $this->state["products"] = ProductsModel::filterProducts($_POST["sizeId"]);

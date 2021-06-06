@@ -58,4 +58,3 @@ if (document.getElementById("customerForm")) {
     const validator = new Validator("contactforms");
 }
 
-

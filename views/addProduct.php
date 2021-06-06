@@ -1,8 +1,13 @@
 <div class="addProduct">
-    <div>
+    <div class="siteContainer">
         <form action="index.php?controller=pages&action=saveProduct" method="post">
             <div class="fieldset">
                 <label>Name</label>
+                <input type="text" name="name" value="">
+            </div>
+
+            <div class="fieldset">
+                <label>Image</label>
                 <input type="text" name="name" value="">
             </div>
             <div class="fieldset">
@@ -32,7 +37,19 @@
                 </select>
             </div>
             <div class="fieldset">
-                <input type="submit" value="Add Product"/>
+                <label>Size Id</label>
+                <input type="text" name="sizeId" value="">
+            </div>
+            <div class="fieldset">
+                <label>Colour Id</label>
+                <input type="text" name="colourId" value="">
+            </div>
+            <div class="fieldset">
+                <label>Product Quantity</label>
+                <input type="text" name="productQuantity" value="">
+            </div>
+            <div class="fieldset">
+                <input type="submit" value="Add Product" class="cta-primary" />
             </div>
         </form>
     </div>

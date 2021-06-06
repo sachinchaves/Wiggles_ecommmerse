@@ -1,6 +1,4 @@
-<?php 
-    var_dump($_SESSION["customerId"]);
-?>
+
 <div id="register" class="wrapper">
     <div class="formcontainer">
         <h1 class="logo">Wiggles | The Pet Bandana shop</h1>

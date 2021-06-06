@@ -31,7 +31,6 @@
                     'productQuantity' => $itemQuantity,
                     'productSize' => $itemSize
                 );
-                var_dump($itemArr);
                 $_SESSION["cart"][0] = $itemArr;
             }
         }
@@ -79,7 +78,6 @@
         }
 
         static public function createOrder(){
-            var_dump($_SESSION["cart"]);
             
             // $customersArr = array();
             $customers = DB::fetchOne("SELECT * FROM customers WHERE id='".$_SESSION["customerId"]."'");
@@ -149,6 +147,11 @@
         static public function unsetItems(){
             unset($_SESSION["cart"]);
             unset($_SESSION["orderId"]);
+        }
+
+        static public function updateOrderStatus($id) {
+            DB::runQuery("UPDATE orders SET `status`='Fullfilled' WHERE id='".$id."' ");
+            // header("location: index.php?controller=pages&action=viewOrders");
         }
     }
 ?>

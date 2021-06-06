@@ -13,7 +13,6 @@
             
             if($user) {
                 $_SESSION[$sessionVal] = $user["id"];
-                echo $_SESSION[$sessionVal];
                 $encPassword = $user["password"];
                 $providedPassword = $_POST["password"];
                 if(password_verify($providedPassword, $encPassword)){

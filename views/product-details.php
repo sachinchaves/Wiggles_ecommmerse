@@ -34,6 +34,14 @@
                                     }
                                 ?>
                             </select>
+                            <a href="javascript:void(0)" class="sizeChartLink"> Size Chart</a>
+                            <ul class="sizeChart hide">
+                                <li><small>XS-fits neck sized upto 10 Inces</small></li>
+                                <li><small>S-fits neck sized upto 16 Inces</small></li>
+                                <li><small>M-fits neck sized upto 24 Inces</small></li>
+                                <li><small>L fits neck sized upto 27 Inces</small></li>
+                                <li><small>XL fits neck sized upto 32 Inces</small></li>
+                            </ul>
                         </div>
 
                         <div class="fieldset">
@@ -63,3 +71,5 @@
 
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="js/misc.js"></script>

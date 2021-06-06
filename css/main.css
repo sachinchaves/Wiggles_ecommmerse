@@ -218,7 +218,7 @@ label, .fieldset{
     background-size: contain;
 }
 
-.navSection{
+.navSection, .adminNav{
     position: relative;
     height: 100%;
     background: var(--background);
@@ -424,7 +424,7 @@ span.orignalPrice {
     font-size: 18px;
 }
 
-#features, #register {
+#features, #register, .editProductDetails, .addProduct {
     background: var(--background);
 }
 
@@ -637,7 +637,7 @@ textarea {
     padding-left: 20px;
 }
 
-#contactforms .fieldset, #contactforms .fieldset input {
+#contactforms .fieldset, #contactforms .fieldset input, .editProductDetails .fieldset, .editProductDetails input, .addProduct .fieldset, .addProduct input {
     width: 400px;
     max-width: 100%;
 }
@@ -650,6 +650,47 @@ textarea {
     height: 100px;
 }
 
+.sizeChart {
+    padding-top:10px;
+}
+
+#dashboard .cover-photo img {
+    width: 300px;
+    max-width: 100%;
+}
+
+.editProductDetails .fieldset, .editProductDetails label, .addProduct .fieldset, .addProduct label{
+    display: block;
+}
+
+.adminNav a{
+    color: var(--tertiary);
+    margin-right: 20px;
+    font-size: 20px;
+
+}
+
+.editProductDetails {
+    padding-bottom:90px;
+}
+
+.record {
+    border: 1px solid var(--tertiary);
+    padding: 20px;
+}
+
+.recordContainer {
+    padding-bottom: 10px;
+}
+
+.record h3 {
+    padding: 15px 0;
+}
+
+#productInfo .thumbnail img {
+    width: 340px;
+    max-width: 100%;
+}
 @media screen and (min-width: 992px) {
 
     h2 {
