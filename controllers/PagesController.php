@@ -103,8 +103,17 @@
     
         }
 
-        public function processAddress(){
-
+        //challenge landing page
+        public function landing(){
+            $this->state["browserTitle"] = "Wiggles | The Pet Banda Shop";
+            $this->state["content"] = $this->loadView("navbar");
+            $this->state["about"] = $this->loadView("about");
+            $this->state["products"] = ProductsModel::getFeatured();
+            $this->state["featuredProductGrid"] = $this->loadView("products-grid");
+            $this->state["featuredProduct"] = $this->loadView("featured-products");
+            $this->state["content"] .= $this->loadView("landing");
+            $this->state["content"] .= $this->loadView("footer");
+            $this->state["html"] = $this->loadView("template");
         }
 
         public function saveContact(){
@@ -159,6 +168,8 @@
             $this->state["content"] = $this->loadView("products-grid");
             $this->state["html"] = $this->loadView("template");
         }
+
+        
         
         public function error(){
             $this->state["errorMsg"] = "Action not found";
